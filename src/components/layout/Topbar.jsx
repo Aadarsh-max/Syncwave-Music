@@ -1,8 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import { HiChevronLeft, HiChevronRight, HiBell } from 'react-icons/hi'
+import { useAuth } from '../../context/AuthContext.jsx'
+import Avatar from '../ui/Avatar.jsx'
 
 export default function Topbar() {
   const navigate = useNavigate()
+  const { user } = useAuth()
 
   return (
     <header
@@ -23,14 +26,8 @@ export default function Topbar() {
             onClick={action}
             className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200"
             style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)', color: '#6a6a7a' }}
-            onMouseEnter={e => {
-              e.currentTarget.style.color = '#fff'
-              e.currentTarget.style.background = 'rgba(255,255,255,0.12)'
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.color = '#6a6a7a'
-              e.currentTarget.style.background = 'rgba(255,255,255,0.06)'
-            }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.background = 'rgba(255,255,255,0.12)' }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#6a6a7a'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)' }}
           >
             <Icon size={18} />
           </button>
@@ -46,14 +43,8 @@ export default function Topbar() {
         >
           <HiBell size={16} />
         </button>
-        <div
-          className="w-8 h-8 rounded-full flex items-center justify-center text-black text-xs font-black cursor-pointer select-none transition-all duration-200 hover:scale-110"
-          style={{
-            background: 'linear-gradient(135deg, #1DB954, #0ea5e9)',
-            boxShadow: '0 0 20px rgba(29,185,84,0.5), 0 0 40px rgba(14,165,233,0.2)',
-          }}
-        >
-          U
+        <div onClick={() => navigate('/profile')} className="cursor-pointer">
+          <Avatar name={user?.name || 'U'} size={32} />
         </div>
       </div>
     </header>
