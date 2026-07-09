@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import Profile from './pages/Profile.jsx'
 import Room from './pages/Room.jsx'
+import Search from './pages/Search.jsx'
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Home /> },
+      { path: 'search', element: <Search /> },
       { path: 'profile', element: <Profile /> },
       { path: 'room/:roomId', element: <Room /> },
     ],
