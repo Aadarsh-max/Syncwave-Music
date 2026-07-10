@@ -5,6 +5,7 @@ import Login from './pages/Login.jsx'
 import Profile from './pages/Profile.jsx'
 import Room from './pages/Room.jsx'
 import Search from './pages/Search.jsx'
+import Grow from './pages/Grow.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       { path: 'search', element: <Search /> },
       { path: 'profile', element: <Profile /> },
       { path: 'room/:roomId', element: <Room /> },
+      { path: 'grow', element: <Grow /> },
     ],
   },
   { path: '/login', element: <Login /> },
